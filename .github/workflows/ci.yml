@@ -37,6 +37,12 @@ jobs:
         with:
           fetch-depth: 0 # Necessary to fetch all tags and history
 
+    # Below step is to skip deployment steps if the PR is created by Dependabot. This is to avoid unnecessary workflow runs for dependency updates.
+      - name: Check if actor is Dependabot
+        if: github.actor == 'dependabot[bot]'
+        run: |
+          echo "Dependabot PR detected. Skipping workflow steps."
+
       - name: Set up node.js
         uses: actions/setup-node@v4
         with:
