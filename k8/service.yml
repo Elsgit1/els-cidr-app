@@ -27,7 +27,7 @@ spec:
   - port: 8080
     name: http
     targetPort: 80
-  clusterIP: ClusterIP
+  type: ClusterIP
   selector:
     app: rdicidr
 ---
