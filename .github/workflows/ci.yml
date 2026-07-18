@@ -17,7 +17,7 @@ env:
   AWS_REGION: us-west-1
   REPOSITORY: fsl-app
   REGISTRY: Amazon ECR
-  APP_DIR: 'codebase/rdicidr-0.1.0/**'
+  APP_DIR: codebase/rdicidr-0.1.0
 
 jobs:
   build-and-push:
@@ -42,7 +42,7 @@ jobs:
         with:
           node-version: '15.5.1'
           cache: 'npm'
-          cache-dependency-path: 'codebase/rdicidr-0.1.0/package-lock.json'
+          cache-dependency-path: ${{ env.APP_DIR }}/package-lock.json
 
       - name: Install dependencies
         run: npm install
