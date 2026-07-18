@@ -116,7 +116,7 @@ jobs:
           ECR_REPOSITORY: ${{ env.REPOSITORY }}
           IMAGE_TAG: ${{ steps.next_version.outputs.tag }}
         run: |
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f codebase/rdicidr-0.1.0/Dockerfile .
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -f Dockerfile .
           echo "IMAGE_NAME=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_ENV
           echo "name=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
                      
