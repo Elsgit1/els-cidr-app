@@ -15,7 +15,7 @@ on:
 
 env:
   AWS_REGION: us-west-1
-  REPOSITORY: fsl-app
+  REPOSITORY: rdicidr-app
   REGISTRY: Amazon ECR
   APP_DIR: codebase/rdicidr-0.1.0
 
@@ -93,7 +93,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ steps.next_version.outputs.tag }}
-          release_name: fsl-app ${{ steps.next_version.outputs.tag }}
+          release_name: rdicidr-app ${{ steps.next_version.outputs.tag }}
           draft: false
           prerelease: false
   
@@ -141,7 +141,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: ${{ env.REPOSITORY }}
           IMAGE_TAG: ${{ steps.next_version.outputs.tag }}
-          APP_NAME: fsl-app
+          APP_NAME: rdicidr-app
           DOCKERHUB_USERNAME: elsdokr
         run: |
           docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$APP_NAME:$IMAGE_TAG
@@ -164,7 +164,7 @@ jobs:
           IMAGE_TAG: ${{ steps.next_version.outputs.tag }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCKERHUB_USERNAME: elsdokr
-          APP_NAME: fsl-app
+          APP_NAME: rdicidr-app
         run: |
           # 1. Configure git user for the runner FIRST
           git config --global user.name "github-actions[bot]"
