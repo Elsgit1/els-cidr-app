@@ -1,2 +1,4 @@
-# fsl-challenge
-Repo to execute the FullStack DevOps challenge
+# Interactive CIDR Calculator by RDerik
+This app was developed by RDerik. 
+
+My goal here is to containerize the app and push the container image to a container registry, from where the app can be pulled and deployed into any environment that can run docker containers - this repo specifically is targetting running the container image in a Kubernetes cluster. I developed the GitHub Actions pipeline which will run tests, build the app, run vulnerability checks, docker build it into a container image and push up to the container registry. The pipeline is designed such that Snyk vulnerability checks will be triggered every time a pull request is made on this repo, this way you can validate if any vulnerabilities you must return to remediate before you merge your code to main. Now, on merge to main, then entire pipeline runs and if any code changed within the `codebase` directory then a new container image which be created and GitHub actions will automatically create a PR to update the Kubernetes deployment manifest with the updated image name and tag.
